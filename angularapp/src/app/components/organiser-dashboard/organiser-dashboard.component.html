@@ -4,7 +4,7 @@
 >
   <!-- <div class="main-head"> -->
   <div class="top-head">
-    <button class="add-btn-grad" (click)="navigateToAddRental()">
+    <button class="add-btn-grad" (click)="navigateToAddEvent()">
       Add new Vacation Rental
     </button>
     <button class="logout-btn-grad" (click)="showLogoutPopup = true">
@@ -18,7 +18,7 @@
     <input
       type="text"
       [(ngModel)]="searchText"
-      (input)="searchVacationRentalsByUserId()"
+      (input)="searchEventManagementsByUserId()"
       placeholder="Search your title here..."
     />
   </div>
