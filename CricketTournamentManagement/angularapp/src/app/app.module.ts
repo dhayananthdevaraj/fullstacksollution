@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -10,6 +10,7 @@ import { OrganiserDashboardComponent } from './components/organiser-dashboard/or
 import { ParticipantDashboardComponent } from './components/participant-dashboard/participant-dashboard.component';
 import { AddTournamentComponent } from './components/add-tournament/add-tournament.component';
 import { EditTournamentComponent } from './components/edit-tournament/edit-tournament.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,10 @@ import { EditTournamentComponent } from './components/edit-tournament/edit-tourn
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
