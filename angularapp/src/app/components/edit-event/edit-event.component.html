@@ -60,7 +60,7 @@
               type="date"
               id="startDate"
               name="startDate"
-            [value]="getFormattedDate(event.startDate)"
+            [value]="event.startDate"
               [(ngModel)]="event.startDate"
             />
           </div>
@@ -71,14 +71,14 @@
               type="date"
               id="endDate"
               name="endDate"
-              [value]="getFormattedDate(event.endDate)"
+              [value]="event.endDate"
               [(ngModel)]="event.endDate"
             />
           </div>
 
         <div class="button-submit">
           <button type="submit" (click)="updateEventManagement()">
-            Update Vacation Rental
+            Update Event
           </button>
         </div>
       </form>
