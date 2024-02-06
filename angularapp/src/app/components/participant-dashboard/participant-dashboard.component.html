@@ -41,7 +41,7 @@
       <div (click)="viewInfo(event)">
         <h2>{{ event.title }}</h2>
         <p>{{ event.description }}</p>
-        <p>Start Date: {{ event.startDate | date:'dd-MM-yyyy'}}</p>
+        <p>Start Date: {{ event.startDate | date:'yyyy-MM-dd'}}</p>
       </div>
     </div>
   </div>
@@ -61,8 +61,8 @@
     <div class="image-container">
       <p><strong>Description:</strong> {{ selectedItem.description }}</p>
       <p><strong>Location:</strong> {{ selectedItem.location }}</p>
-      <p><strong>Start Date:</strong> {{ selectedItem.startDate | date:'dd-MM-yyyy'}}</p>
-      <p><strong>End Date:</strong> {{ selectedItem.endDate | date:'dd-MM-yyyy'}}</p>
+      <p><strong>Start Date:</strong> {{ selectedItem.startDate | date:'yyyy-MM-dd'}}</p>
+      <p><strong>End Date:</strong> {{ selectedItem.endDate | date:'yyyy-MM-dd'}}</p>
       <p>
         <strong>Posted by:</strong> {{ selectedItem?.firstName }}
         {{ selectedItem?.lastName }}
