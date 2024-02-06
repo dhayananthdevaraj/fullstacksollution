@@ -14,9 +14,9 @@
     </div>
 
     <div class="form-group">
-        <label for="photo">Cover Image:</label>
-        <input type="file" id="photo" formControlName="photo" (change)="handleFileChange($event)" accept=".png, .jpg">
-        <div *ngIf="eventForm.get('photo').hasError('required') && eventForm.get('photo').touched">
+        <label for="coverImage">Cover Image:</label>
+        <input type="file" id="coverImage" formControlName="coverImage" (change)="handleFileChange($event)" accept=".png, .jpg">
+        <div *ngIf="eventForm.get('coverImage').hasError('required') && eventForm.get('coverImage').touched">
             *Photo is required.
         </div>
     </div>
@@ -30,12 +30,12 @@
       </div>
 
     <div class="form-group">
-        <label for="propertyType">Category:</label>
-        <select id="propertyType" formControlName="propertyType">
-            <option value="">Select a property type</option>
-            <option *ngFor="let type of propertyTypes" [value]="type">{{type}}</option>
+        <label for="category">Category:</label>
+        <select id="category" formControlName="category">
+            <option value="">Select a category type</option>
+            <option *ngFor="let type of categories" [value]="type">{{type}}</option>
         </select>
-        <div *ngIf="eventForm.get('propertyType').hasError('required') && eventForm.get('propertyType').touched">
+        <div *ngIf="eventForm.get('category').hasError('required') && eventForm.get('category').touched">
             *Property Type is required.
         </div>
     </div>

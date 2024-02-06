@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Event } from 'src/app/models/event.model';
+import { EventmanagementService } from 'src/app/services/eventmanagement.service';
 
 @Component({
   selector: 'app-add-event',
@@ -11,23 +13,23 @@ export class AddEventComponent {
 
 
   eventForm: FormGroup;
-  rental: VacationRental
+  event: Event
   photoImage="";
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private vacationRentalService: VacationrentalService, private route:Router) {
+  constructor(private fb: FormBuilder, private eventManagementService: EventmanagementService, private route:Router) {
     this.eventForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      propertyType: ['', Validators.required],
-      noOfBedroom: ['', Validators.required],
+      category: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
       location: ['', Validators.required],
-      pricePerDay: ['', Validators.required],
-      photo: [null, Validators.required],
+      coverImage: [null, Validators.required],
     });
   }
 
-  propertyTypes = ['House', 'Apartment', 'Villa', 'Cabin', 'Condo', 'Other'];
+  categories = ['House', 'Apartment', 'Villa', 'Cabin', 'Condo', 'Other'];
 
   onSubmit() {
     if (this.eventForm.valid) {
@@ -35,20 +37,19 @@ export class AddEventComponent {
       console.log(this.eventForm.value);
       //pass userid from local storage
       // this.eventForm.value.userId=localStorage.getItem('userId');
-      this.rental = new VacationRental();
-      this.rental.title = this.eventForm.get('title').value;
-      this.rental.propertyType = this.eventForm.get('propertyType').value;
-      this.rental.description = this.eventForm.get('description').value;
-      this.rental.noOfBedroom = this.eventForm.get('noOfBedroom').value;
-      this.rental.amenities = this.eventForm.get('amenities').value;
-      this.rental.location = this.eventForm.get('location').value;
-      this.rental.pricePerDay = this.eventForm.get('pricePerDay').value;
-      this.rental.photo = this.photoImage;
-      this.rental.userId = localStorage.getItem('userId');
-      this.vacationRentalService.addVacationRental(this.rental).subscribe(
+      this.event = new Event();
+      this.event.title = this.eventForm.get('title').value;
+      this.event.category = this.eventForm.get('category').value;
+      this.event.description = this.eventForm.get('description').value;
+      this.event.startDate = this.eventForm.get('startDate').value;
+      this.event.location = this.eventForm.get('location').value;
+      this.event.endDate = this.eventForm.get('endDate').value;
+      this.event.coverImage = this.photoImage;
+      this.event.userId = localStorage.getItem('userId');
+      this.eventManagementService.addEventManagement(this.event).subscribe(
         (response) => {
           // Handle success if needed
-          console.log('rental added successfully', response);
+          console.log('event added successfully', response);
           this.eventForm.reset(); // Reset the form
           this.route.navigate(['/organiser-dashboard']);
         },
@@ -96,7 +97,7 @@ export class AddEventComponent {
 
   goBack() {
     // Navigate to the dashboard or any desired route
-    this.route.navigate(['/owner-dashboard']);
+    this.route.navigate(['/organiser-dashboard']);
   }
 
 
