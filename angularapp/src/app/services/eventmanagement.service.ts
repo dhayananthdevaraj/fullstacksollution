@@ -13,7 +13,7 @@ export class EventmanagementService {
   constructor(private http: HttpClient) {}
 
   addEventManagement(eventData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/api/vacation`, eventData);
+    return this.http.post(`${this.apiUrl}/api/event`, eventData);
   }
 
   getEventManagementsByUserId(): Observable<any> {

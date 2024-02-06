@@ -1,4 +1,4 @@
-export interface Event {
+export class Event {
     eventId?: string;
     userId?: string;
     title: string;

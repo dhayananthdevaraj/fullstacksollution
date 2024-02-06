@@ -68,11 +68,11 @@
 
   <div class="grid-container">
     <div class="grid-item" *ngFor="let vacationRental of events">
-      <img src="{{ vacationRental.photo }}" alt="Book Image" class="vacationRental-image" />
+      <img src="{{ vacationRental.coverImage }}" alt="Book Image" class="vacationRental-image" />
       <div (click)="viewInfo(vacationRental)">
       <h2>{{ vacationRental.title }}</h2>
       <p>{{ vacationRental.description }}</p>
-      <p>Price per day: {{ vacationRental.pricePerDay }}</p>
+      <p>Start Date: {{ vacationRental.startDate | date:'dd-MM-yyyy'}}</p>
     </div>
       <div class="buttons">
         <button
@@ -150,13 +150,10 @@
               <td>{{ selectedItem.location }}</td>
             </tr>
           </table> -->
-      <p><strong>Title: </strong>{{ selectedItem.title }}</p>
       <p><strong>Description:</strong> {{ selectedItem.description }}</p>
-      <p><strong>Price per day:</strong> {{ selectedItem.pricePerDay }}</p>
-      <p><strong>Property Type:</strong> {{ selectedItem.propertyType }}</p>
-      <p><strong>Number of Bedrooms:</strong> {{ selectedItem.noOfBedroom }}</p>
-      <p><strong>Amenities:</strong> {{ selectedItem.amenities }}</p>
-      <p><strong>Address:</strong> {{ selectedItem.location }}</p>
+      <p><strong>Location:</strong> {{ selectedItem.location }}</p>
+      <p><strong>Start Date:</strong> {{ selectedItem.startDate | date:'dd-MM-yyyy'}}</p>
+      <p><strong>End Date:</strong> {{ selectedItem.endDate }}</p>
     </div>
   </div>
 </div>
