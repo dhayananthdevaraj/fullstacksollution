@@ -72,13 +72,13 @@ toggleModal() {
 
 searchText: string = ''; // Declare the 'searchText' property as a string
 sortValue: string = ''; // Declare the 'sortValue' property as a string
-searchVacationRentals() {
+searchEventManagements() {
   this.eventManagementService.searchEventManagements(this.searchText).subscribe(eventResponse => {
-    this.events = vacationRentals;
+    this.events = eventResponse;
   });
 }
 
-sortVacationRentals() {
+sortEventManagements() {
   this.eventManagementService.sortEventManagements(this.sortValue).subscribe(eventResponse => {
     this.events = eventResponse;
   });

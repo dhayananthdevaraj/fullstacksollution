@@ -9,39 +9,39 @@
       Logout
     </button>
   </div>
-  <h1>Available Vacation Rentals</h1>
+  <h1>All Events</h1>
 
   <!-- </div> -->
   <div class="search-sort-container">
     <input
       type="text"
       [(ngModel)]="searchText"
-      (input)="searchVacationRentals()"
-      placeholder="Search by vacation rental name..."
+      (input)="searchEventManagements()"
+      placeholder="Search by event name..."
     />
     <div>
-    <label for="sort">Sort by Price per day:</label>
+    <label for="sort">Sort by Start Date:</label>
     <select
       [(ngModel)]="sortValue"
-      (change)="sortVacationRentals()"
+      (change)="sortEventManagements()"
       class="sort-select">
         <option value="">Select</option>
-      <option value="1">Ascending</option>
-      <option value="-1">Descending</option>    </select>
+      <option value="1">Date Ascending</option>
+      <option value="-1">Date Descending</option>    </select>
     </div>
   </div>
 
   <div class="grid-container">
-    <div class="grid-item" *ngFor="let vacationRental of vacationRentals">
+    <div class="grid-item" *ngFor="let event of events">
       <img
-        src="{{ vacationRental.photo }}"
-        alt="Book Image"
+        src="{{ event.coverImage }}"
+        alt="Event Image"
         class="vacationRental-image"
       />
-      <div (click)="viewInfo(vacationRental)">
-        <h2>{{ vacationRental.title }}</h2>
-        <p>{{ vacationRental.description }}</p>
-        <p>Price per day: {{ vacationRental.pricePerDay }}</p>
+      <div (click)="viewInfo(event)">
+        <h2>{{ event.title }}</h2>
+        <p>{{ event.description }}</p>
+        <p>Start Date: {{ event.startDate | date:'dd-MM-yyyy'}}</p>
       </div>
     </div>
   </div>
@@ -60,10 +60,9 @@
     <h2>Details</h2>
     <div class="image-container">
       <p><strong>Description:</strong> {{ selectedItem.description }}</p>
-      <p><strong>Rental Price:</strong> {{ selectedItem.pricePerDay }}</p>
       <p><strong>Location:</strong> {{ selectedItem.location }}</p>
-      <p><strong>Bedrooms:</strong> {{ selectedItem.noOfBedroom }}</p>
-      <p><strong>Amenities:</strong> {{ selectedItem.amenities }}</p>
+      <p><strong>Start Date:</strong> {{ selectedItem.startDate | date:'dd-MM-yyyy'}}</p>
+      <p><strong>End Date:</strong> {{ selectedItem.endDate | date:'dd-MM-yyyy'}}</p>
       <p>
         <strong>Posted by:</strong> {{ selectedItem?.firstName }}
         {{ selectedItem?.lastName }}
