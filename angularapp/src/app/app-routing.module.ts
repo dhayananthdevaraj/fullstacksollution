@@ -11,7 +11,7 @@ import { ParticipantDashboardComponent } from './components/participant-dashboar
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
-  { path: 'orgainser-dashboard', component: OrganiserDashboardComponent},
+  { path: 'organiser-dashboard', component: OrganiserDashboardComponent},
   { path: 'participant-dashboard', component: ParticipantDashboardComponent},
   { path: 'add-event', component: AddEventComponent},
   { path: 'edit-event/:id', component: EditEventComponent},
