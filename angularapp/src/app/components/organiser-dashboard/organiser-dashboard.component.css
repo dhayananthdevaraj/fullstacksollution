@@ -93,7 +93,7 @@ h1 {
   
   
   
-  #vacationRentalHomeBody.blur{
+  #eventHomeBody.blur{
     filter: blur(3px);
   }
   
@@ -216,7 +216,7 @@ h1 {
   
   .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     gap: 1rem;
   }
   
@@ -226,7 +226,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    cursor:grab
+    cursor:grab;
   }
   
   .vacationRental-image {
