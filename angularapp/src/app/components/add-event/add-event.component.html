@@ -1,1 +1,79 @@
-<p>add-event works!</p>
+<div class="main-container">
+    <div class="sub-container">
+<button class="back-btn" (click)="goBack()">Back</button>
+
+<h1>Create New Vacation Rental</h1>
+
+<form [formGroup]="rentalForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" id="title" formControlName="title">
+      <div *ngIf="rentalForm.get('title').hasError('required') && rentalForm.get('title').touched">
+        *Title is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label for="photo">Cover Image:</label>
+        <input type="file" id="photo" formControlName="photo" (change)="handleFileChange($event)" accept=".png, .jpg">
+        <div *ngIf="rentalForm.get('photo').hasError('required') && rentalForm.get('photo').touched">
+            *Photo is required.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" formControlName="description"></textarea>
+        <div *ngIf="rentalForm.get('description').hasError('required') && rentalForm.get('description').touched">
+         *Description is required.
+        </div>
+      </div>
+
+    <div class="form-group">
+        <label for="propertyType">Category:</label>
+        <select id="propertyType" formControlName="propertyType">
+            <option value="">Select a property type</option>
+            <option *ngFor="let type of propertyTypes" [value]="type">{{type}}</option>
+        </select>
+        <div *ngIf="rentalForm.get('propertyType').hasError('required') && rentalForm.get('propertyType').touched">
+            *Property Type is required.
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" id="location" formControlName="location">
+        <div *ngIf="rentalForm.get('location').hasError('required') && rentalForm.get('location').touched">
+            *Location is required.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" formControlName="startDate">
+        <div *ngIf="rentalForm.get('startDate').hasError('required') && rentalForm.get('startDate').touched">
+            *Start Date is required.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" formControlName="endDate">
+        <div *ngIf="rentalForm.get('endDate').hasError('required') && rentalForm.get('endDate').touched">
+            *Start Date is required.
+        </div>
+    </div>
+
+  <div class="button-submit">
+    <button class="button-submit" type="submit" >Create Vacation Rental</button>
+  </div>
+    <div *ngIf="errorMessage" class="error-message">
+      *{{ errorMessage }}
+    </div>
+
+    
+  </form>
+  
+  </div>
+</div>

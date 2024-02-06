@@ -5,13 +5,13 @@
   <!-- <div class="main-head"> -->
   <div class="top-head">
     <button class="add-btn-grad" (click)="navigateToAddEvent()">
-      Add new Vacation Rental
+      Add Event
     </button>
     <button class="logout-btn-grad" (click)="showLogoutPopup = true">
       Logout
     </button>
   </div>
-  <h1>My Vacation Rentals</h1>
+  <h1>My Events</h1>
 
   <!-- </div> -->
   <div class="search-sort-container">
@@ -19,7 +19,7 @@
       type="text"
       [(ngModel)]="searchText"
       (input)="searchEventManagementsByUserId()"
-      placeholder="Search your title here..."
+      placeholder="Search by event name..."
     />
   </div>
 
