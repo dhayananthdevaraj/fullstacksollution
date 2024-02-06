@@ -13,7 +13,7 @@ export class EditEventComponent implements OnInit {
   photoImage="";
   constructor(private route: ActivatedRoute, private eventManagementService: EventmanagementService, private router: Router) { }
 
-  category = ['House', 'Apartment', 'Villa', 'Cabin', 'Condo', 'Other'];
+  categories = ['House', 'Apartment', 'Villa', 'Cabin', 'Condo', 'Other'];
 
   ngOnInit() {
     const eventId = this.route.snapshot.paramMap.get('id');
@@ -21,10 +21,19 @@ export class EditEventComponent implements OnInit {
     this.getEventManagementById(eventId);
   }
 
+getFormattedDate(dateString: string): string {
+    const date = new Date(dateString);
+    const formattedDate = date.toISOString().substring(0, 10); // "yyyy-MM-dd"
+    return formattedDate;
+  }
+  
+
   getEventManagementById(id: string) {
     this.eventManagementService.getEventManagementById(id).subscribe(
       (response) => {
         this.event = response;
+        this.event.startDate = this.getFormattedDate(this.event.startDate);
+        this.event.endDate = this.getFormattedDate(this.event.endDate);
         console.log(response)
       },
       (error) => {

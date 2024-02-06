@@ -35,7 +35,7 @@
           <select
             id="category"
             name="category"
-            [(ngModel)]="vacationRental.propertyType"
+            [(ngModel)]="event.category"
           >
             <option value="">Select a category type</option>
             <option *ngFor="let type of categories" [value]="type">
@@ -60,6 +60,7 @@
               type="date"
               id="startDate"
               name="startDate"
+            [value]="getFormattedDate(event.startDate)"
               [(ngModel)]="event.startDate"
             />
           </div>
@@ -70,12 +71,13 @@
               type="date"
               id="endDate"
               name="endDate"
+              [value]="getFormattedDate(event.endDate)"
               [(ngModel)]="event.endDate"
             />
           </div>
 
         <div class="button-submit">
-          <button type="submit" (click)="updateVacationRental()">
+          <button type="submit" (click)="updateEventManagement()">
             Update Vacation Rental
           </button>
         </div>

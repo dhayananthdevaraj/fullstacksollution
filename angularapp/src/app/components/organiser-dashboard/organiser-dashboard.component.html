@@ -67,12 +67,12 @@
       </table> -->
 
   <div class="grid-container">
-    <div class="grid-item" *ngFor="let vacationRental of events">
-      <img src="{{ vacationRental.coverImage }}" alt="Book Image" class="vacationRental-image" />
+    <div class="grid-item" *ngFor="let event of events">
+      <img src="{{ event.coverImage }}" alt="Book Image" class="vacationRental-image" />
       <div (click)="viewInfo(vacationRental)">
-      <h2>{{ vacationRental.title }}</h2>
-      <p>{{ vacationRental.description }}</p>
-      <p>Start Date: {{ vacationRental.startDate | date:'dd-MM-yyyy'}}</p>
+      <h2>{{ event.title }}</h2>
+      <p>{{ event.description }}</p>
+      <p>Start Date: {{ event.startDate | date:'dd-MM-yyyy'}}</p>
     </div>
       <div class="buttons">
         <button
@@ -87,7 +87,7 @@
         </button>
         <button
           class="edit-btn-grad"
-          (click)="navigateToEditVacationRental(vacationRental); $event.stopPropagation()"
+          (click)="navigateToEditEvent(event); $event.stopPropagation()"
         >
           Edit
         </button>
