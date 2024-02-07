@@ -6,9 +6,9 @@
 
 <form [formGroup]="cricketTournamentForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="title">Tournament Name:</label>
-      <input type="text" id="title" formControlName="title">
-      <div *ngIf="cricketTournamentForm.get('title').hasError('required') && cricketTournamentForm.get('title').touched">
+      <label for="tournamentName">Tournament Name:</label>
+      <input type="text" id="tournamentName" formControlName="tournamentName">
+      <div *ngIf="cricketTournamentForm.get('tournamentName').hasError('required') && cricketTournamentForm.get('tournamentName').touched">
         *Title is required.
       </div>
     </div>
@@ -17,30 +17,11 @@
         <label for="coverImage">Cover Image:</label>
         <input type="file" id="coverImage" formControlName="coverImage" (change)="handleFileChange($event)" accept=".png, .jpg">
         <div *ngIf="cricketTournamentForm.get('coverImage').hasError('required') && cricketTournamentForm.get('coverImage').touched">
-            *Photo is required.
+            *Cover Image is required.
         </div>
     </div>
 
-    <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea id="description" formControlName="description"></textarea>
-        <div *ngIf="cricketTournamentForm.get('description').hasError('required') && cricketTournamentForm.get('description').touched">
-         *Description is required.
-        </div>
-      </div>
-
-    <div class="form-group">
-        <label for="category">Category:</label>
-        <select id="category" formControlName="category">
-            <option value="">Select a category type</option>
-            <option *ngFor="let type of categories" [value]="type">{{type}}</option>
-        </select>
-        <div *ngIf="cricketTournamentForm.get('category').hasError('required') && cricketTournamentForm.get('category').touched">
-            *Property Type is required.
-        </div>
-    </div>
-
-
+    
     <div class="form-group">
         <label for="location">Location:</label>
         <input type="text" id="location" formControlName="location">
@@ -48,6 +29,25 @@
             *Location is required.
         </div>
     </div>
+
+    <div class="form-group">
+        <label for="rules">Rules:</label>
+        <textarea id="rules" formControlName="rules"></textarea>
+        <div *ngIf="cricketTournamentForm.get('rules').hasError('required') && cricketTournamentForm.get('rules').touched">
+         *Rules is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="prize">Prize:</label>
+        <textarea id="prize" formControlName="prize"></textarea>
+        <div *ngIf="cricketTournamentForm.get('prize').hasError('required') && cricketTournamentForm.get('prize').touched">
+         *Prize is required.
+        </div>
+      </div>
+
+    
+
 
     <div class="form-group">
         <label for="startDate">Start Date:</label>

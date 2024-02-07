@@ -18,9 +18,9 @@ export class AddTournamentComponent {
 
   constructor(private fb: FormBuilder, private cricketTournamentService: CrickettournamentService, private route:Router) {
     this.cricketTournamentForm = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      category: ['', Validators.required],
+      tournamentName: ['', Validators.required],
+      rules: ['', Validators.required],
+      prize: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       location: ['', Validators.required],
@@ -37,9 +37,9 @@ export class AddTournamentComponent {
       //pass userid from local storage
       // this.cricketTournamentForm.value.userId=localStorage.getItem('userId');
       this.cricketTournament = new CricketTournament();
-      this.cricketTournament.title = this.cricketTournamentForm.get('title').value;
-      this.cricketTournament.category = this.cricketTournamentForm.get('category').value;
-      this.cricketTournament.description = this.cricketTournamentForm.get('description').value;
+      this.cricketTournament.tournamentName = this.cricketTournamentForm.get('tournamentName').value;
+      this.cricketTournament.rules = this.cricketTournamentForm.get('rules').value;
+      this.cricketTournament.prize = this.cricketTournamentForm.get('prize').value;
       this.cricketTournament.startDate = this.cricketTournamentForm.get('startDate').value;
       this.cricketTournament.location = this.cricketTournamentForm.get('location').value;
       this.cricketTournament.endDate = this.cricketTournamentForm.get('endDate').value;

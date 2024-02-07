@@ -54,4 +54,5 @@ export class EventmanagementService {
 
   sortEventManagements(sortValue: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/api/event`, { params: { sortValue }});
-  }}
+  }
+}
