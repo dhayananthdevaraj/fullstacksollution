@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CrickettournamentService } from 'src/app/services/crickettournament.service';
+import { CricketTournament } from 'src/app/models/crickettournament.model';
 
 @Component({
   selector: 'app-add-tournament',
@@ -10,13 +11,13 @@ import { CrickettournamentService } from 'src/app/services/crickettournament.ser
 })
 export class AddTournamentComponent {
 
-  eventForm: FormGroup;
-  event: Event
+  cricketTournamentForm: FormGroup;
+  cricketTournament: CricketTournament
   photoImage="";
   errorMessage = '';
 
   constructor(private fb: FormBuilder, private cricketTournamentService: CrickettournamentService, private route:Router) {
-    this.eventForm = this.fb.group({
+    this.cricketTournamentForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       category: ['', Validators.required],
@@ -30,25 +31,25 @@ export class AddTournamentComponent {
   categories = ['House', 'Apartment', 'Villa', 'Cabin', 'Condo', 'Other'];
 
   onSubmit() {
-    if (this.eventForm.valid) {
+    if (this.cricketTournamentForm.valid) {
       // Call the service method to post the product
-      console.log(this.eventForm.value);
+      console.log(this.cricketTournamentForm.value);
       //pass userid from local storage
-      // this.eventForm.value.userId=localStorage.getItem('userId');
-      this.event = new Event();
-      this.event.title = this.eventForm.get('title').value;
-      this.event.category = this.eventForm.get('category').value;
-      this.event.description = this.eventForm.get('description').value;
-      this.event.startDate = this.eventForm.get('startDate').value;
-      this.event.location = this.eventForm.get('location').value;
-      this.event.endDate = this.eventForm.get('endDate').value;
-      this.event.coverImage = this.photoImage;
-      this.event.userId = localStorage.getItem('userId');
-      this.eventManagementService.addEventManagement(this.event).subscribe(
+      // this.cricketTournamentForm.value.userId=localStorage.getItem('userId');
+      this.cricketTournament = new CricketTournament();
+      this.cricketTournament.title = this.cricketTournamentForm.get('title').value;
+      this.cricketTournament.category = this.cricketTournamentForm.get('category').value;
+      this.cricketTournament.description = this.cricketTournamentForm.get('description').value;
+      this.cricketTournament.startDate = this.cricketTournamentForm.get('startDate').value;
+      this.cricketTournament.location = this.cricketTournamentForm.get('location').value;
+      this.cricketTournament.endDate = this.cricketTournamentForm.get('endDate').value;
+      this.cricketTournament.coverImage = this.photoImage;
+      this.cricketTournament.userId = localStorage.getItem('userId');
+      this.cricketTournamentService.addCricketTournament(this.cricketTournament).subscribe(
         (response) => {
           // Handle success if needed
-          console.log('event added successfully', response);
-          this.eventForm.reset(); // Reset the form
+          console.log('cricketTournament added successfully', response);
+          this.cricketTournamentForm.reset(); // Reset the form
           this.route.navigate(['/organiser-dashboard']);
         },
         (error) => {

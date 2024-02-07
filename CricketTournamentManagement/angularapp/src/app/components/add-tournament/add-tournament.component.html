@@ -2,13 +2,13 @@
     <div class="sub-container">
 <button class="back-btn" (click)="goBack()">Back</button>
 
-<h1>Create New Event</h1>
+<h1>Create New Tournament</h1>
 
-<form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="cricketTournamentForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="title">Title:</label>
+      <label for="title">Tournament Name:</label>
       <input type="text" id="title" formControlName="title">
-      <div *ngIf="eventForm.get('title').hasError('required') && eventForm.get('title').touched">
+      <div *ngIf="cricketTournamentForm.get('title').hasError('required') && cricketTournamentForm.get('title').touched">
         *Title is required.
       </div>
     </div>
@@ -16,7 +16,7 @@
     <div class="form-group">
         <label for="coverImage">Cover Image:</label>
         <input type="file" id="coverImage" formControlName="coverImage" (change)="handleFileChange($event)" accept=".png, .jpg">
-        <div *ngIf="eventForm.get('coverImage').hasError('required') && eventForm.get('coverImage').touched">
+        <div *ngIf="cricketTournamentForm.get('coverImage').hasError('required') && cricketTournamentForm.get('coverImage').touched">
             *Photo is required.
         </div>
     </div>
@@ -24,7 +24,7 @@
     <div class="form-group">
         <label for="description">Description:</label>
         <textarea id="description" formControlName="description"></textarea>
-        <div *ngIf="eventForm.get('description').hasError('required') && eventForm.get('description').touched">
+        <div *ngIf="cricketTournamentForm.get('description').hasError('required') && cricketTournamentForm.get('description').touched">
          *Description is required.
         </div>
       </div>
@@ -35,7 +35,7 @@
             <option value="">Select a category type</option>
             <option *ngFor="let type of categories" [value]="type">{{type}}</option>
         </select>
-        <div *ngIf="eventForm.get('category').hasError('required') && eventForm.get('category').touched">
+        <div *ngIf="cricketTournamentForm.get('category').hasError('required') && cricketTournamentForm.get('category').touched">
             *Property Type is required.
         </div>
     </div>
@@ -44,7 +44,7 @@
     <div class="form-group">
         <label for="location">Location:</label>
         <input type="text" id="location" formControlName="location">
-        <div *ngIf="eventForm.get('location').hasError('required') && eventForm.get('location').touched">
+        <div *ngIf="cricketTournamentForm.get('location').hasError('required') && cricketTournamentForm.get('location').touched">
             *Location is required.
         </div>
     </div>
@@ -52,7 +52,7 @@
     <div class="form-group">
         <label for="startDate">Start Date:</label>
         <input type="date" id="startDate" formControlName="startDate">
-        <div *ngIf="eventForm.get('startDate').hasError('required') && eventForm.get('startDate').touched">
+        <div *ngIf="cricketTournamentForm.get('startDate').hasError('required') && cricketTournamentForm.get('startDate').touched">
             *Start Date is required.
         </div>
     </div>
@@ -60,7 +60,7 @@
     <div class="form-group">
         <label for="endDate">End Date:</label>
         <input type="date" id="endDate" formControlName="endDate">
-        <div *ngIf="eventForm.get('endDate').hasError('required') && eventForm.get('endDate').touched">
+        <div *ngIf="cricketTournamentForm.get('endDate').hasError('required') && cricketTournamentForm.get('endDate').touched">
             *Start Date is required.
         </div>
     </div>
