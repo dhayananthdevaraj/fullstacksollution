@@ -77,7 +77,8 @@
     <span class="close" (click)="toggleModal()">&times;</span>
     <h2>Details</h2>
     <div class="image-container">
-      <p><strong>Description:</strong> {{ selectedItem.description }}</p>
+      <p><strong>Rules:</strong> {{ selectedItem.rules }}</p>
+      <p><strong>Description:</strong> {{ selectedItem.rules }}</p>
       <p><strong>Location:</strong> {{ selectedItem.location }}</p>
       <p><strong>Start Date:</strong> {{ selectedItem.startDate | date:'yyyy-MM-dd'}}</p>
       <p><strong>End Date:</strong> {{ selectedItem.endDate | date:'yyyy-MM-dd'}}</p>
