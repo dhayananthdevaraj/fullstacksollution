@@ -9,16 +9,16 @@ import { CrickettournamentService } from 'src/app/services/crickettournament.ser
 })
 export class EditTournamentComponent implements OnInit {
 
-  event: any = {};
+  cricketTournament: any = {};
   photoImage="";
   constructor(private route: ActivatedRoute, private cricketTournamentService: CrickettournamentService, private router: Router) { }
 
   categories = ['House', 'Apartment', 'Villa', 'Cabin', 'Condo', 'Other'];
 
   ngOnInit() {
-    const eventId = this.route.snapshot.paramMap.get('id');
-    console.log('Event Ids to be edited', eventId);
-    this.getCricketTournamentsById(eventId);
+    const tournamentId = this.route.snapshot.paramMap.get('id');
+    console.log('Cricket Tournament Id to be edited', tournamentId);
+    this.getCricketTournamentsById(tournamentId);
   }
 
 getFormattedDate(dateString: string): string {
@@ -31,27 +31,27 @@ getFormattedDate(dateString: string): string {
   getCricketTournamentsById(id: string) {
     this.cricketTournamentService.getCricketTournamentsById(id).subscribe(
       (response) => {
-        this.event = response;
-        this.event.startDate = this.getFormattedDate(this.event.startDate);
-        this.event.endDate = this.getFormattedDate(this.event.endDate);
+        this.cricketTournament = response;
+        this.cricketTournament.startDate = this.getFormattedDate(this.cricketTournament.startDate);
+        this.cricketTournament.endDate = this.getFormattedDate(this.cricketTournament.endDate);
         console.log(response)
       },
       (error) => {
-        console.error('Error retrieving mobile', error);
+        console.error('Error retrieving cricket tournament', error);
       }
     );
   }
 
   updateCricketTournament() {
-    this.event.coverImage=this.photoImage;
-    this.cricketTournamentService.updateCricketTournament(this.event).subscribe(
+    this.cricketTournament.coverImage=this.photoImage;
+    this.cricketTournamentService.updateCricketTournament(this.cricketTournament).subscribe(
       (response) => {
-        console.log('Event updated successfully', response);
+        console.log('Cricket tournament updated successfully', response);
         //navigate to seller dashboard
         this.router.navigate(['/organiser-dashboard']);
       },
       (error) => {
-        console.error('Error updating mobile', error);
+        console.error('Error updating cricket tournament', error);
       }
     );
  }
