@@ -21,8 +21,8 @@ export class OrganiserDashboardComponent implements OnInit {
     private cricketTournamentService: CrickettournamentService
   ) {}
 
-  navigateToAddEvent() {
-    this.router.navigate(['/add-event']);
+  navigateToAddTournament() {
+    this.router.navigate(['/add-tournament']);
   }
   logout() {
     // Perform logout logic here
