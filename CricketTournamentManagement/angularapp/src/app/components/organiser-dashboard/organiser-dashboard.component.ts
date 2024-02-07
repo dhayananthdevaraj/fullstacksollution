@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CricketTournament } from 'src/app/models/crickettournament.model';
+import { CrickettournamentService } from 'src/app/services/crickettournament.service';
 
 @Component({
   selector: 'app-organiser-dashboard',
@@ -9,14 +11,14 @@ import { Router } from '@angular/router';
 export class OrganiserDashboardComponent implements OnInit {
 
   showDeletePopup = false;
-  selectedEvent: Event;
+  selectedCricketTournament: CricketTournament;
   showLogoutPopup = false;
   selectedItem: any = {};
   showModal: boolean = false;
 
   constructor(
     private router: Router,
-    private eventManagementService: EventmanagementService
+    private cricketTournamentService: CrickettournamentService
   ) {}
 
   navigateToAddEvent() {
@@ -33,45 +35,45 @@ export class OrganiserDashboardComponent implements OnInit {
     window.location.href = '/login';
   }
 
-  events: any[] = []; // Declare the 'vacationRentals' property as an array of any type
+  cricketTournaments: any[] = []; // Declare the 'vacationRentals' property as an array of any type
 
   ngOnInit(): void {
     // when add vacationRental button is clicked, trigger this function getBooksByUserId()
-    this.getEventManagementsByUserId();
+    this.getCricketTournamentsByUserId();
   }
 
-  navigateToEditEvent(eventId: { eventId: number }) {
-    console.log('Event Id to be edited', eventId);
-    this.router.navigate(['/edit-event', eventId.eventId]);
+  navigateToEditTournament(cricketTournamentId: { tournamentId: number }) {
+    console.log('CricketTournament Id to be edited', cricketTournamentId);
+    this.router.navigate(['/edit-tournament', cricketTournamentId.tournamentId]);
   }
 
-  getEventManagementsByUserId() {
-    this.eventManagementService.getEventManagementsByUserId().subscribe(
+  getCricketTournamentsByUserId() {
+    this.cricketTournamentService.getCricketTournamentsByUserId().subscribe(
       (data) => {
         console.log(data);
-        this.events = data;
+        this.cricketTournaments = data;
       },
       (error) => {
-        console.error('Error retrieving events', error);
+        console.error('Error retrieving cricket tournaments', error);
       }
     );
   }
 
-  deleteEventManagement(eventId: string) {
-    this.eventManagementService.deleteEventManagement(eventId).subscribe(
+  deleteCricketTournament(CricketTournamentId: string) {
+    this.cricketTournamentService.deleteCricketTournament(CricketTournamentId).subscribe(
       (response) => {
-        console.log('Event deleted successfully', response);
-        this.getEventManagementsByUserId();
+        console.log('CricketTournament deleted successfully', response);
+        this.getCricketTournamentsByUserId();
       },
       (error) => {
-        console.error('Error deleting event', error);
+        console.error('Error deleting cricket tournament', error);
       }
     );
   }
 
-  viewInfo(event: any) {
-    console.log(event);
-    this.selectedItem = event;
+  viewInfo(CricketTournament: any) {
+    console.log(CricketTournament);
+    this.selectedItem = CricketTournament;
     this.toggleModal();
   }
 
@@ -81,11 +83,11 @@ export class OrganiserDashboardComponent implements OnInit {
 
   searchText: string = ''; // Declare the 'searchText' property as a string
   sortValue: string = ''; // Declare the 'sortValue' property as a string
-  searchEventManagementsByUserId() {
-    this.eventManagementService
-      .searchEventManagementsByUserId(this.searchText)
-      .subscribe((event) => {
-        this.events = event;
+  searchCricketTournamentsByUserId() {
+    this.cricketTournamentService
+      .searchCricketTournamentsByUserId(this.searchText)
+      .subscribe((CricketTournament) => {
+        this.cricketTournaments = CricketTournament;
       });
   }
 
