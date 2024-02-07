@@ -12,34 +12,34 @@ export class CrickettournamentService {
 
   constructor(private http: HttpClient) {}
 
-  addEventManagement(eventData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/api/event`, eventData);
+  addCricketTournament(cricketTournamentData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/api/event`, cricketTournamentData);
   }
 
-  getEventManagementsByUserId(): Observable<any> {
+  getCricketTournamentsByUserId(): Observable<any> {
     const userId = localStorage.getItem('userId');
     return this.http.get<any>(`${this.apiUrl}/api/event/user/${userId}`);
   }
 
-  updateEventManagement(eventData: any): Observable<any> {
-    const id = eventData.eventId;
-    return this.http.put(`${this.apiUrl}/api/event/${id}`, eventData);
+  updateCricketTournament(cricketTournamentData: any): Observable<any> {
+    const id = cricketTournamentData.eventId;
+    return this.http.put(`${this.apiUrl}/api/event/${id}`, cricketTournamentData);
   }
 
-  deleteEventManagement(eventData: any): Observable<any> {
-    const id = eventData.eventId;
+  deleteCricketTournament(cricketTournamentData: any): Observable<any> {
+    const id = cricketTournamentData.eventId;
     return this.http.delete(`${this.apiUrl}/api/event/${id}`);
   }
 
-  getAllEventManagement(): Observable<any> {
+  getAllCricketTournaments(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/api/event`);
   }
 
-  getEventManagementById(id: string): Observable<any> {
+  getCricketTournamentsById(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/api/event/${id}`);
   }
 
-  searchEventManagementsByUserId(searchValue: string): Observable<any> {
+  searchCricketTournamentsByUserId(searchValue: string): Observable<any> {
     const userId = localStorage.getItem('userId');
     return this.http.get(`${this.apiUrl}/api/event/user/${userId}`, { params: {userId, searchValue }});
   }
@@ -48,11 +48,11 @@ export class CrickettournamentService {
     return this.http.get<any>(`${this.apiUrl}/api/users`);
   }
 
-  searchEventManagements(searchValue: string): Observable<any> {
+  searchCricketTournaments(searchValue: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/api/event`, { params: { searchValue }});
   }
 
-  sortEventManagements(sortValue: string): Observable<any> {
+  sortCricketTournaments(sortValue: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/api/event`, { params: { sortValue }});
   }
 }
