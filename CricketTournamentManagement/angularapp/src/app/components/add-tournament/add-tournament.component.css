@@ -38,9 +38,10 @@
       font-size: 17px;
     }
   
-    input[type="file"] {  
+    input[type="file"], textarea {  
       font-size: 17px;
-      border: 1px solid black;
+      border: 2px solid black;
+      border-radius: 5px;
     }
   
     .amenity-container{

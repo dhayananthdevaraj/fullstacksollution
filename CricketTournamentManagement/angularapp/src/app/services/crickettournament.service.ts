@@ -13,35 +13,35 @@ export class CrickettournamentService {
   constructor(private http: HttpClient) {}
 
   addCricketTournament(cricketTournamentData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/api/event`, cricketTournamentData);
+    return this.http.post(`${this.apiUrl}/api/tournaments`, cricketTournamentData);
   }
 
   getCricketTournamentsByUserId(): Observable<any> {
     const userId = localStorage.getItem('userId');
-    return this.http.get<any>(`${this.apiUrl}/api/event/user/${userId}`);
+    return this.http.get<any>(`${this.apiUrl}/api/tournaments/user/${userId}`);
   }
 
   updateCricketTournament(cricketTournamentData: any): Observable<any> {
-    const id = cricketTournamentData.eventId;
-    return this.http.put(`${this.apiUrl}/api/event/${id}`, cricketTournamentData);
+    const id = cricketTournamentData.tournamentId;
+    return this.http.put(`${this.apiUrl}/api/tournaments/${id}`, cricketTournamentData);
   }
 
   deleteCricketTournament(cricketTournamentData: any): Observable<any> {
-    const id = cricketTournamentData.eventId;
-    return this.http.delete(`${this.apiUrl}/api/event/${id}`);
+    const id = cricketTournamentData.tournamentId;
+    return this.http.delete(`${this.apiUrl}/api/tournaments/${id}`);
   }
 
   getAllCricketTournaments(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/api/event`);
+    return this.http.get<any>(`${this.apiUrl}/api/tournaments`);
   }
 
   getCricketTournamentsById(id: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/api/event/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/api/tournaments/${id}`);
   }
 
   searchCricketTournamentsByUserId(searchValue: string): Observable<any> {
     const userId = localStorage.getItem('userId');
-    return this.http.get(`${this.apiUrl}/api/event/user/${userId}`, { params: {userId, searchValue }});
+    return this.http.get(`${this.apiUrl}/api/tournaments/user/${userId}`, { params: {userId, searchValue }});
   }
 
   getAllUsers(): Observable<any> {
@@ -49,10 +49,10 @@ export class CrickettournamentService {
   }
 
   searchCricketTournaments(searchValue: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/api/event`, { params: { searchValue }});
+    return this.http.get(`${this.apiUrl}/api/tournaments`, { params: { searchValue }});
   }
 
   sortCricketTournaments(sortValue: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/api/event`, { params: { sortValue }});
+    return this.http.get(`${this.apiUrl}/api/tournaments`, { params: { sortValue }});
   }
 }

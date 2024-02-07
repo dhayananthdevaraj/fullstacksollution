@@ -40,7 +40,7 @@
 
       <div class="form-group">
         <label for="prize">Prize:</label>
-        <textarea id="prize" formControlName="prize"></textarea>
+        <input id="prize" formControlName="prize">
         <div *ngIf="cricketTournamentForm.get('prize').hasError('required') && cricketTournamentForm.get('prize').touched">
          *Prize is required.
         </div>
@@ -66,7 +66,7 @@
     </div>
 
   <div class="button-submit">
-    <button class="button-submit" type="submit" >Create Event</button>
+    <button class="button-submit" type="submit" >Create Tournament</button>
   </div>
     <div *ngIf="errorMessage" class="error-message">
       *{{ errorMessage }}
